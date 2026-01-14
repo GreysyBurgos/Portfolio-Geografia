@@ -33,8 +33,15 @@
                 </article>
 
                 <article class="card slider-card" data-target="p3">
-                    <div class="card-image-placeholder">P3: Clima</div>
-                    <div class="card-content"><div class="card-meta"><h3>Clima</h3><span class="format-tag tag-pdf">PDF</span></div></div>
+                    <div class="card-image-placeholder">
+                        <img src="Prac5/temperatura.png" alt="Mapa Clima">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <h3>Temperatura y Precipitaciones</h3>
+                            <span class="format-tag tag-pdf">PDF</span>
+                        </div>
+                    </div>
                 </article>
 
                 <article class="card slider-card" data-target="p4">
@@ -57,7 +64,7 @@
                     <div class="card-content"><div class="card-meta"><h3>Madrid</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
                 </article>
                 
-                 <article class="card slider-card" data-target="p9">
+                <article class="card slider-card" data-target="p9">
                     <div class="card-image-placeholder">P9: Índices</div>
                     <div class="card-content"><div class="card-meta"><h3>SAVI/EVI</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
                 </article>
@@ -66,7 +73,6 @@
                     <div class="card-image-placeholder">P10: GIF</div>
                     <div class="card-content"><div class="card-meta"><h3>Evolución</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
                 </article>
-
 
                 <article class="card slider-card" data-target="p1">
                     <div class="card-image-placeholder">P1: Setup</div>
@@ -128,11 +134,23 @@
                 </div>
             </article>
 
-            <article id="p3" class="card grid-card hidden" data-title="Climatología" data-desc="Mapa de temperaturas y precipitaciones." data-tag="PDF">
-                <div class="card-image-placeholder">P3: Mapa Clima</div>
+            <article id="p3" class="card grid-card hidden" 
+                data-title="Catografia Tematica" 
+                data-desc="Utilizar las diferentes herramientas de geoprocesamiento raster para la obtencion de mapas tematicos de coropletas. Se crearan dos mapas, uno de temperaturas medias del mes de junio y otro de pluviometría anual en España." 
+                data-tag="PDF"
+                data-type="multi-pdf" 
+                data-link1="Prac5/MapaTemperaturas.pdf" 
+                data-text1="Ver Mapa Temperaturas"
+                data-link2="Prac5/MapaPrecipitaciones.pdf"
+                data-text2="Ver Gráfico Precipitaciones"
+                data-img="Prac5/temperatura.png">
+
+                <div class="card-image-placeholder">
+                    <img src="Prac5/temperatura.png" alt="Mapa Clima">
+                </div>
                 <div class="card-content">
-                    <div class="card-meta"><h3>Temp. y Precipitaciones</h3><span class="format-tag tag-pdf">PDF</span></div>
-                    <p class="card-desc">Mapa estático climático.</p>
+                    <div class="card-meta"><h3>Temperatura y Precipitaciones</h3><span class="format-tag tag-pdf">PDF</span></div>
+                    <p class="card-desc">Pdf de los mapas.</p>
                 </div>
             </article>
 
@@ -216,10 +234,13 @@
                 <h2 id="modal-title">Título</h2>
             </div>
             <div class="modal-body">
-                <div class="modal-image-area"><span>Vista Previa</span></div>
-                <p id="modal-desc" style="margin-top: 20px; color: var(--gray);">Descripción...</p>
+                <div class="modal-image-area">
+                    <span>Vista Previa</span>
+                </div>
+                <p id="modal-desc">Descripción...</p>
                 <br>
-                <a href="#" class="modal-btn">Ver Archivo / Mapa</a>
+                <div id="modal-actions" class="modal-actions">
+                    </div>
             </div>
         </div>
     </div>
