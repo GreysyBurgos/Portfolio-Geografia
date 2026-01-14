@@ -21,7 +21,7 @@
   <script src="https://unpkg.com/shpjs@3.4.0/dist/shp.min.js"></script>
   <script>
     (function(){
-      const SHP_ZIP = 'Prac5/ZONAS_VALIDAS.zip'; // debe existir en la carpeta Prac5
+      const SHP_ZIP = 'ZONAS_VALIDAS.zip'; // debe existir en la carpeta Prac4
       const map = L.map('map').setView([40.0, -4.0], 6);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
 
@@ -47,7 +47,7 @@
           } catch(e){}
         }).catch(err => {
           console.error(err);
-          alert('No se pudo cargar ZONAS_VALIDAS.zip. Comprueba que exista en /Prac5/');
+          alert('No se pudo cargar ZONAS_VALIDAS.zip. Comprueba que exista en Prac4');
         });
       } else {
         alert('shp.js no cargado.');

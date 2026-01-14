@@ -6,7 +6,7 @@
   - Al click, asegura que el botón del modal abra fullmap-p4.html
 */
 (function () {
-    const FULLMAP_URL = 'fullmap-p4.html';
+    const FULLMAP_URL = 'Prac4/fullmap-p4.html';
 
     function ensureButton(modal, text) {
         const actions = modal.querySelector('#modal-actions') || modal.querySelector('.modal-actions');
