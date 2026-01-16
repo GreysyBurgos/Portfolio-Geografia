@@ -28,13 +28,20 @@
             <div class="slider-track infinite-scroll">
                 
                 <article class="card slider-card" data-target="p1">
-                    <div class="card-image-placeholder">P1: Setup</div>
-                    <div class="card-content"><div class="card-meta"><h3>Iniciación</h3><span class="format-tag tag-img">IMG</span></div></div>
+                    <div class="card-image-placeholder">
+                        <img src="Prac1/pract1.png" alt="Mapa Clima">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <h3>Iniciación</h3>
+                            <span class="format-tag tag-img">IMG</span>
+                        </div>
+                    </div>
                 </article>
 
                 <article class="card slider-card" data-target="p3">
                     <div class="card-image-placeholder">
-                        <img src="Prac3/temperatura.png" alt="Mapa Clima">
+                        <img src="Prac5/temperatura.png" alt="Mapa Clima">
                     </div>
                     <div class="card-content">
                         <div class="card-meta">
@@ -46,7 +53,7 @@
 
                 <article class="card slider-card" data-target="p4">
                     <div class="card-image-placeholder">
-                        <img src="Prac5/P4_ZonasValidas.png" alt="Mapa zonas validas">
+                        <img src="Prac5/P4_ZonasValidas.png" alt="Mapa Clima">
                     </div>
                     <div class="card-content"><div class="card-meta"><h3>Zonas</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
                 </article>
@@ -79,40 +86,6 @@
                     <div class="card-image-placeholder">P10: GIF</div>
                     <div class="card-content"><div class="card-meta"><h3>Evolución</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
                 </article>
-
-                <article class="card slider-card" data-target="p1">
-                    <div class="card-image-placeholder">P1: Setup</div>
-                    <div class="card-content"><div class="card-meta"><h3>Iniciación</h3><span class="format-tag tag-img">IMG</span></div></div>
-                </article>
-                <article class="card slider-card" data-target="p3">
-                    <div class="card-image-placeholder">P3: Clima</div>
-                    <div class="card-content"><div class="card-meta"><h3>Clima</h3><span class="format-tag tag-pdf">PDF</span></div></div>
-                </article>
-                <article class="card slider-card" data-target="p4">
-                    <div class="card-image-placeholder">P4: Zonas</div>
-                    <div class="card-content"><div class="card-meta"><h3>Zonas</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
-                </article>
-                <article class="card slider-card" data-target="p5">
-                    <div class="card-image-placeholder">P5: Severidad</div>
-                    <div class="card-content"><div class="card-meta"><h3>Severidad</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
-                </article>
-                <article class="card slider-card" data-target="p7">
-                    <div class="card-image-placeholder">P7: Gráficos</div>
-                    <div class="card-content"><div class="card-meta"><h3>Datos</h3><span class="format-tag tag-img">JPG</span></div></div>
-                </article>
-                <article class="card slider-card" data-target="p8">
-                    <div class="card-image-placeholder">P8: Madrid</div>
-                    <div class="card-content"><div class="card-meta"><h3>Madrid</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
-                </article>
-                <article class="card slider-card" data-target="p9">
-                    <div class="card-image-placeholder">P9: Índices</div>
-                    <div class="card-content"><div class="card-meta"><h3>SAVI/EVI</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
-                </article>
-                <article class="card slider-card" data-target="p10">
-                    <div class="card-image-placeholder">P10: GIF</div>
-                    <div class="card-content"><div class="card-meta"><h3>Evolución</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
-                </article>
-
             </div>
         </div>
 
@@ -132,8 +105,14 @@
         </div>
 
         <div class="grid">
-            <article id="p1" class="card grid-card hidden" data-title="Iniciación TIG" data-desc="Captura de pantalla de la configuración inicial." data-tag="IMG">
-                <div class="card-image-placeholder">P1: Setup</div>
+            <article id="p1" class="card grid-card hidden" 
+            data-title="Iniciación TIG" 
+            data-desc="Captura de pantalla de la configuración inicial." 
+            data-tag="IMG"
+            data-img="Prac1/pract1.png">
+                <div class="card-image-placeholder">
+                    <img src="Prac1/pract1.png" alt="Setup TIG">
+                </div>
                 <div class="card-content">
                     <div class="card-meta"><h3>Iniciación TIG</h3><span class="format-tag tag-img">IMG</span></div>
                     <p class="card-desc">Captura de pantalla inicial.</p>
@@ -141,17 +120,18 @@
             </article>
 
             <article id="p3" class="card grid-card hidden" 
-                data-title="Catografia Tematica" 
+                data-title="Cartografia Tematica" 
                 data-desc="Utilizar las diferentes herramientas de geoprocesamiento raster para la obtencion de mapas tematicos de coropletas. Se crearan dos mapas, uno de temperaturas medias del mes de junio y otro de pluviometría anual en España." 
                 data-tag="PDF"
                 data-type="multi-pdf" 
-                data-link1="Prac3/MapaTemperaturas.pdf" 
+                data-link1="Prac5/MapaTemperaturas.pdf" 
                 data-text1="Ver Mapa Temperaturas"
                 data-link2="Prac3/MapaPrecipitaciones.pdf"
                 data-text2="Ver Gráfico Precipitaciones"
                 data-img="Prac3/temperatura.png">
+
                 <div class="card-image-placeholder">
-                    <img src="Prac3/temperatura.png" alt="Mapa Clima">
+                    <img src="Prac5/temperatura.png" alt="Mapa Clima">
                 </div>
                 <div class="card-content">
                     <div class="card-meta"><h3>Temperatura y Precipitaciones</h3><span class="format-tag tag-pdf">PDF</span></div>

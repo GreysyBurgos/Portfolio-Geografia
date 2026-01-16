@@ -1,5 +1,4 @@
-
-// --- script.js DEFINITIVO (SOPORTA 1 O 2 BOTONES AUTOMÁTICAMENTE) ---
+// --- script.js ACTUALIZADO (MODO "SIN BOTÓN" SOPORTADO) ---
 
 // 1. ANIMACIÓN SCROLL
 const observer = new IntersectionObserver((entries) => {
@@ -25,7 +24,7 @@ document.querySelectorAll('.slider-card').forEach(card => {
 });
 
 
-// 3. GALERÍA (LÓGICA UNIVERSAL)
+// 3. GALERÍA 
 const gridCards = document.querySelectorAll('.grid-card');
 const modalOverlay = document.getElementById('project-modal');
 const modalCloseBtn = document.querySelector('.modal-close');
@@ -43,16 +42,15 @@ gridCards.forEach(card => {
         const tag = card.getAttribute('data-tag');
         const imgSrc = card.getAttribute('data-img');
 
-        // LEEMOS TODOS LOS POSIBLES ENLACES
-        const link1 = card.getAttribute('data-link1'); // Enlace primario (P3, P7)
+        // Enlaces
+        const link1 = card.getAttribute('data-link1'); 
         const text1 = card.getAttribute('data-text1');
-        const link2 = card.getAttribute('data-link2'); // Enlace secundario (P3, P7)
+        const link2 = card.getAttribute('data-link2'); 
         const text2 = card.getAttribute('data-text2');
-        
-        const singleLink = card.getAttribute('data-link'); // Enlace simple (otras prácticas)
+        const singleLink = card.getAttribute('data-link'); 
         const singleText = card.getAttribute('data-text');
 
-        // --- 2. RELLENAR TEXTOS ---
+        // --- 2. TEXTOS ---
         if(title) modalTitle.textContent = title;
         if(desc) modalDesc.textContent = desc;
 
@@ -72,21 +70,24 @@ gridCards.forEach(card => {
             modalImageArea.innerHTML = '<span>Vista Previa</span>';
         }
 
-        // --- 5. BOTONES (LÓGICA AUTOMÁTICA) ---
+        // --- 5. BOTONES (LÓGICA ACTUALIZADA) ---
         modalActions.innerHTML = ''; 
 
         if (link2) {
-            // == CASO A: TIENE 2 ENLACES (P3, P7) ==
-            // Usamos link1 y link2 obligatoriamente
+            // CASO A: Dos enlaces (P3, P7)
             if(link1) createBtn(link1, text1 || 'Ver Principal', modalActions);
             createBtn(link2, text2 || 'Ver Secundario', modalActions);
 
         } else {
-            // == CASO B: SOLO 1 ENLACE (Resto) ==
-            // Priorizamos 'link1' si existe, si no usamos 'singleLink', si no '#'
-            const finalLink = link1 || singleLink || '#';
-            const finalText = text1 || singleText || 'Ver Archivo / Mapa';
-            createBtn(finalLink, finalText, modalActions);
+            // CASO B: Un enlace o NINGUNO
+            const finalLink = link1 || singleLink;
+            
+            // ¡AQUÍ ESTÁ EL CAMBIO!
+            // Solo creamos el botón si realmente hay un enlace
+            if (finalLink && finalLink !== '#') {
+                const finalText = text1 || singleText || 'Ver Archivo / Mapa';
+                createBtn(finalLink, finalText, modalActions);
+            }
         }
 
         modalOverlay.classList.add('active');
@@ -94,7 +95,6 @@ gridCards.forEach(card => {
     });
 });
 
-// Función auxiliar para crear botones
 function createBtn(url, text, container) {
     const btn = document.createElement('a');
     btn.href = url;
@@ -104,7 +104,6 @@ function createBtn(url, text, container) {
     container.appendChild(btn);
 }
 
-// Cerrar
 function closeModal() {
     modalOverlay.classList.remove('active');
     document.body.style.overflow = 'auto';
