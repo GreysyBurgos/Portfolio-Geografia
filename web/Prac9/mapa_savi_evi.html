@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Visor de Índices (SAVI / EVI)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { width: 100%; height: 100vh; }
+        
+        /* Estilo para la cajita de capas */
+        .leaflet-control-layers {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <script>
+        // --- 1. CONFIGURACIÓN ---
+        // Coordenadas extraídas de tu Notebook (geometry)
+        var norte = 39.00;
+        var sur = 38.90;
+        var este = -0.15;
+        var oeste = -0.40;
+        
+        // Área donde se pegarán las imágenes
+        var imageBounds = [[sur, oeste], [norte, este]];
+
+        // --- 2. INICIALIZAR EL MAPA ---
+        var map = L.map('map').setView([38.95, -0.275], 12); // Centro aproximado
+
+        // Mapas Base
+        var callejero = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© OpenStreetMap'});
+        var satelite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {attribution: '© Esri'});
+
+        // Ponemos el callejero por defecto
+        callejero.addTo(map);
+
+        // --- 3. TUS CAPAS DE IMAGEN (PNG) ---
+        // Cargamos las dos imágenes pero NO las añadimos al mapa todavía (salvo la que quieras ver primero)
+        
+        var capaSAVI = L.imageOverlay('mapa_SAVI.png', imageBounds, {opacity: 0.9});
+        var capaEVI = L.imageOverlay('mapa_EVI.png', imageBounds, {opacity: 0.9});
+
+        // Activamos SAVI por defecto para que se vea algo al entrar
+        capaSAVI.addTo(map);
+
+
+        // --- 4. CONTROL DE CAPAS (El Botón Mágico) ---
+        
+        // Mapas de fondo (Base)
+        var baseMaps = {
+            "Mapa Callejero": callejero,
+            "Mapa Satélite": satelite
+        };
+
+        // Tus capas superpuestas (Overlays)
+        var overlayMaps = {
+            "Índice SAVI": capaSAVI,
+            "Índice EVI": capaEVI
+        };
+
+        // Crear el control y añadirlo arriba a la derecha
+        L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
+
+    </script>
+</body>
+</html>
