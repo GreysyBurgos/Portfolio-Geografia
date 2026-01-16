@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Severidad — Mapa Completo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html,body,#map { height:100%; margin:0; }
+    #map { width:100%; }
+    .topbar { position:absolute; left:12px; top:12px; z-index:4000; background:#fff; padding:8px 12px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.12); }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="index.html" style="text-decoration:none;color:#0366d6;">← Volver</a>
+  </div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/georaster/dist/georaster.browserify.min.js"></script>
+  <script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js"></script>
+  <script>
+    (async function(){
+      // Ruta del GeoTIFF (recomendado: COG para mejor rendimiento)
+      const TIFF_URL = 'Prac5/severidad.tif'; // o 'Prac5/severidad.tif' si no convertiste
+
+      const map = L.map('map').setView([40.0, -4.0], 6);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+
+      try {
+        const resp = await fetch(TIFF_URL);
+        const arrayBuffer = await resp.arrayBuffer();
+        const georaster = await parseGeoraster(arrayBuffer);
+
+        // Ajusta esta función según tus valores de severidad
+        function pixelToColor(values) {
+          const v = values && values[0];
+          if (v === null || v === undefined || isNaN(v)) return null;
+          // Ejemplo de paleta por rangos (ajusta umbrales)
+          if (v <= 0) return null;
+          if (v < 2) return [255,255,178,200];
+          if (v < 4) return [254,204,92,200];
+          if (v < 6) return [253,141,60,200];
+          return [215,25,28,200];
+        }
+
+        const layer = new GeoRasterLayer({
+          georaster,
+          opacity: 0.85,
+          pixelValuesToColorFn: pixelToColor,
+          resolution: 256
+        });
+        layer.addTo(map);
+        map.fitBounds(layer.getBounds());
+      } catch (err) {
+        console.error('Error cargando GeoTIFF:', err);
+        alert('No se pudo cargar severidad. Comprueba Prac5/severidad.tif o la ruta.');
+      }
+    })();
+  </script>
+</body>
+</html>

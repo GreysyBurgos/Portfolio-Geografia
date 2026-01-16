@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Zonas Válidas — Mapa Completo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html,body,#map { height:100%; margin:0; }
+    #map { width:100%; }
+    .topbar { position: absolute; left:12px; top:12px; z-index:4000; background:#fff; padding:8px 12px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.12); }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="index.html" style="text-decoration:none;color:#0366d6;">← Volver</a>
+  </div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/shpjs@3.4.0/dist/shp.min.js"></script>
+  <script>
+    (function(){
+      const SHP_ZIP = 'ZONAS_VALIDAS.zip'; // debe existir en la carpeta Prac4
+      const map = L.map('map').setView([40.0, -4.0], 6);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+
+      if (typeof shp === 'function') {
+        shp(SHP_ZIP).then(data => {
+          let geo = data;
+          if (geo && geo.type === undefined && geo.features === undefined) {
+            const k = Object.keys(geo || {})[0];
+            if (k && geo[k] && geo[k].type) geo = geo[k];
+          }
+          const layer = L.geoJSON(geo, {
+            style: { color:'#1f78b4', weight:1, fillColor:'#a6cee3', fillOpacity:0.6 },
+            onEachFeature: (f,l) => {
+              if (f.properties) {
+                const html = Object.entries(f.properties).map(([k,v]) => `<strong>${k}</strong>: ${v}`).join('<br>');
+                l.bindPopup(html);
+              }
+            }
+          }).addTo(map);
+          try {
+            const b = layer.getBounds();
+            if (b && typeof b.isValid === 'function' && b.isValid()) map.fitBounds(b, { padding:[20,20] });
+          } catch(e){}
+        }).catch(err => {
+          console.error(err);
+          alert('No se pudo cargar ZONAS_VALIDAS.zip. Comprueba que exista en Prac4');
+        });
+      } else {
+        alert('shp.js no cargado.');
+      }
+    })();
+  </script>
+</body>
+</html>

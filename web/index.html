@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio TIG - GeoWeb</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="viewer.css">
 </head>
 <body>
 
@@ -18,119 +19,282 @@
     </nav>
 
     <header id="inicio" class="hero">
-        <h1 class="hidden">Explorando el mundo<br>a través de los datos.</h1>
-        <p class="hidden">Un análisis geográfico profundo sobre el clima, la demografía y el relieve.</p>
+        <div class="hero-text">
+            <h1 class="hidden">Explorando el mundo<br>a través de los datos.</h1>
+            <p class="hidden">Un análisis geográfico profundo sobre el clima, la demografía y el relieve.</p>
+        </div>
+
+        <div class="slider-wrapper hidden">
+            <div class="slider-track infinite-scroll">
+                
+                <article class="card slider-card" data-target="p1">
+                    <div class="card-image-placeholder">
+                        <img src="Prac1/pract1.png" alt="Mapa Clima">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <h3>Iniciación</h3>
+                            <span class="format-tag tag-img">IMG</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card slider-card" data-target="p3">
+                    <div class="card-image-placeholder">
+                        <img src="Prac5/temperatura.png" alt="Mapa Clima">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <h3>Temperatura y Precipitaciones</h3>
+                            <span class="format-tag tag-pdf">PDF</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card slider-card" data-target="p4">
+                    <div class="card-image-placeholder">
+                        <img src="Prac5/P4_ZonasValidas.png" alt="Mapa Clima">
+                    </div>
+                    <div class="card-content"><div class="card-meta"><h3>Zonas</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
+                </article>
+
+                <article class="card slider-card" data-target="p5">
+                    <div class="card-image-placeholder">
+                        <img src="Prac5/severidad.jpeg" alt="Mapa severidad">
+                    </div>
+                    <div class="card-content"><div class="card-meta"><h3>Severidad</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
+                </article>
+
+                <article class="card slider-card" data-target="p7">
+                    <div class="card-image-placeholder">
+                        <img src="Prac7/Ruta_1_grafico.jpg" alt="Mapa severidad">
+                    </div>
+                    <div class="card-content"><div class="card-meta"><h3>Datos</h3><span class="format-tag tag-img">JPG</span></div></div>
+                </article>
+
+                <article class="card slider-card" data-target="p8">
+                    <div class="card-image-placeholder">                    
+                        <img src="Prac8/PuntosMadrid.png" alt="Mapa Puntos Madrid">
+                    </div>
+                    <div class="card-content"><div class="card-meta"><h3>Madrid</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
+                </article>
+                
+                <article class="card slider-card" data-target="p9">
+                    <div class="card-image-placeholder">                    
+                        <img src="Prac9/Mapa_EVI.png" alt="Mapa EVI">
+                    </div>
+                    <div class="card-content"><div class="card-meta"><h3>SAVI/EVI</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
+                </article>
+
+                <article class="card slider-card" data-target="p10">
+                    <div class="card-image-placeholder">
+                        <img src="Prac10/Prac10.png" alt="Mapa Evolución">
+                    </div>
+                    <div class="card-content"><div class="card-meta"><h3>Evolución</h3><span class="format-tag tag-webmap">WebMap</span></div></div>
+                </article>
+            </div>
+        </div>
+
+        <div class="scroll-indicator hidden">
+            <p>Selecciona un proyecto arriba o desliza para ver la galería</p>
+            <a href="#proyectos" class="arrow-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+            </a>
+        </div>
+
     </header>
 
     <section id="proyectos">
         <div class="section-header hidden">
-            <h2>Prácticas Realizadas</h2>
-            <p>Colección de trabajos de la asignatura TIG (Curso 2024/25).</p>
+            <h2>Galería de Prácticas</h2>
+            <p>Aquí puedes consultar el detalle de cada trabajo.</p>
         </div>
 
         <div class="grid">
-            <article class="card hidden">
-                <div class="card-image-placeholder">Imagen P1</div>
+            <article id="p1" class="card grid-card hidden" 
+            data-title="P1 - Iniciación TIG" 
+            data-desc="Captura de pantalla de la configuración inicial." 
+            data-tag="IMG"
+            data-img="Prac1/pract1.png">
+                <div class="card-image-placeholder">
+                    <img src="Prac1/pract1.png" alt="Setup TIG">
+                </div>
                 <div class="card-content">
-                    <div class="card-meta">
-                        <h3>Iniciación TIG</h3>
-                        <span class="format-tag tag-img">PNG/JPG</span>
-                    </div>
+                    <div class="card-meta"><h3>Iniciación TIG</h3><span class="format-tag tag-img">IMG</span></div>
                     <p class="card-desc">Captura de pantalla inicial.</p>
                 </div>
             </article>
 
-            <article class="card hidden">
-                <div class="card-image-placeholder">Mapa Clima</div>
+            <article id="p3" class="card grid-card hidden" 
+                data-title="P3 - Cartografia Tematica" 
+                data-desc="Utilizar las diferentes herramientas de geoprocesamiento raster para la obtencion de mapas tematicos de coropletas. Se crearan dos mapas, uno de temperaturas medias del mes de junio y otro de pluviometría anual en España." 
+                data-tag="PDF"
+                data-type="multi-pdf" 
+                data-link1="Prac5/MapaTemperaturas.pdf" 
+                data-text1="Ver Mapa Temperaturas"
+                data-link2="Prac3/MapaPrecipitaciones.pdf"
+                data-text2="Ver Gráfico Precipitaciones"
+                data-img="Prac3/temperatura.png">
+
+                <div class="card-image-placeholder">
+                    <img src="Prac5/temperatura.png" alt="Mapa Clima">
+                </div>
                 <div class="card-content">
-                    <div class="card-meta">
-                        <h3>Temp. y Precipitaciones</h3>
-                        <span class="format-tag tag-pdf">PDF</span>
-                    </div>
-                    <p class="card-desc">Mapa estático climático.</p>
+                    <div class="card-meta"><h3>Temperatura y Precipitaciones</h3><span class="format-tag tag-pdf">PDF</span></div>
+                    <p class="card-desc">Pdf de los mapas.</p>
                 </div>
             </article>
 
-            <article class="card hidden">
-                <div class="card-image-placeholder">Mapa Zonas</div>
+            <article id="p4" class="card grid-card hidden" 
+                data-title="P4 - Zonas Válidas" 
+                data-desc="Visualización de Capa Zonas Validas.shp." 
+                data-tag="WebMap"
+                data-img="Prac5/P4_ZonasValidas.png"
+                data-text1="Ver Mapa Zonas Válidas"
+                >
+                <div class="card-image-placeholder">
+                    <img src="Prac5/P4_ZonasValidas.png" alt="Mapa Clima">
+                </div>
                 <div class="card-content">
-                    <div class="card-meta">
-                        <h3>Zonas Válidas</h3>
-                        <span class="format-tag tag-webmap">WebMap</span>
-                    </div>
+                    <div class="card-meta"><h3>Zonas Válidas</h3><span class="format-tag tag-webmap">WebMap</span></div>
                     <p class="card-desc">Visualización Shapefile.</p>
                 </div>
             </article>
 
-            <article class="card hidden">
-                <div class="card-image-placeholder">Raster</div>
+            <article id="p5" class="card grid-card hidden" 
+                data-title="P5 - Severidad Incendios" 
+                data-desc="Análisis de severidad mediante imagen TIF." 
+                data-tag="WebMap"
+                data-img="Prac5/severidad.jpeg"
+                data-text1="Ver Mapa Severidad"
+                >
+                <div class="card-image-placeholder">
+                    <img src="Prac5/severidad.jpeg" alt="Mapa Severidad">
+                </div>
                 <div class="card-content">
-                    <div class="card-meta">
-                        <h3>Severidad</h3>
-                        <span class="format-tag tag-webmap">WebMap</span>
-                    </div>
+                    <div class="card-meta"><h3>Severidad</h3><span class="format-tag tag-webmap">WebMap</span></div>
                     <p class="card-desc">Análisis de imagen TIF.</p>
                 </div>
             </article>
 
-            <article class="card hidden">
-                <div class="card-image-placeholder">Gráficos</div>
+            <article id="p7" class="card grid-card hidden" 
+            data-title="P7 - Rendimiento" 
+            data-desc="Procesamiento de datos georreferenciados, donde el alumnado deberá aplicar diferentes librerías de Python para calcular y analizar parámetros espaciales y temporales a partir de coordenadas geográficas. El resultado final incluirá tanto el análisis numérico como la representación gráfica e interactiva de los datos obtenidos." 
+            data-tag="JPG"
+            data-img="Prac7/Ruta_1_grafico.jpg"
+            data-text1="Ver Tabla de resultados"
+            data-link1="Prac7/Ruta_1.html"
+            data-text2="Ver Grafica"
+            data-link2="Prac7/Ruta_1_grafico.jpg" >
+                <div class="card-image-placeholder">
+                    <img src="Prac7/Ruta_1_grafico.jpg" alt="Mapa Severidad">
+                </div>
                 <div class="card-content">
-                    <div class="card-meta">
-                        <h3>Rendimiento</h3>
-                        <span class="format-tag tag-img">JPG/HTML</span>
-                    </div>
+                    <div class="card-meta"><h3>Rendimiento</h3><span class="format-tag tag-img">JPG</span></div>
                     <p class="card-desc">Tabla y gráficos de datos.</p>
                 </div>
             </article>
 
-            <article class="card hidden">
-                <div class="card-image-placeholder">Madrid</div>
+            <article id="p8" class="card grid-card hidden" 
+                data-title="P8 - Madrid: Accidentes" 
+                data-desc="Mapa de contenedores y accidentes en Madrid." 
+                data-tag="WebMap"
+                data-type="multi-pdf" 
+                data-link1="Prac8/Accidentes_Madrid_ChasiBurgos.html"
+                data-text1="Ver Mapa Accidentes"
+                data-link2="Prac8/Contenedores_ChasiBurgos.html"
+                data-text2="Ver Mapa Contenedores"
+                data-img="Prac8/PuntosMadrid.png">
+                <div class="card-image-placeholder">
+                    <img src="Prac8/PuntosMadrid.png" alt="Mapa Puntos Madrid">
+                </div>
                 <div class="card-content">
-                    <div class="card-meta">
-                        <h3>Accidentes Madrid</h3>
-                        <span class="format-tag tag-webmap">WebMap</span>
-                    </div>
+                    <div class="card-meta"><h3>Accidentes Madrid</h3><span class="format-tag tag-webmap">WebMap</span></div>
                     <p class="card-desc">Mapa de puntos interactivo.</p>
                 </div>
             </article>
 
-             <article class="card hidden">
-                <div class="card-image-placeholder">SAVI / EVI</div>
+            <article id="p9" class="card grid-card hidden" 
+                data-title="P9 - Índice SAVI y EVI" 
+                data-desc="Análisis de vegetación post-incendio." 
+                data-tag="WebMap"
+                data-img="Prac9/mapa_EVI.png" 
+                
+                data-link="Prac9/mapa_savi_evi.html" 
+                data-text="Ver Mapa Interactivo">
+
+                <div class="card-image-placeholder">
+                    <img src="Prac9/mapa_EVI.png" alt="Miniatura SAVI">
+                </div>
                 <div class="card-content">
-                    <div class="card-meta">
-                        <h3>Índices Vegetación</h3>
-                        <span class="format-tag tag-webmap">WebMap</span>
-                    </div>
-                    <p class="card-desc">Cálculo de índices espectrales.</p>
+                    <div class="card-meta"><h3>Índice SAVI</h3><span class="format-tag tag-webmap">WebMap</span></div>
+                    <p class="card-desc">Cálculo de índice de vegetación.</p>
                 </div>
             </article>
+
+            <article id="p10" class="card grid-card hidden" 
+                data-title="Evolución Índices" 
+                data-desc="Imagenes resultante del índice calculado y exportada a Drive" 
+                data-tag="WebMap"
+                data-type="multi-pdf" 
+                data-link1="Prac10/practica_10_Biwa_Chasi_Y_Burgos.html"
+                data-text1="Ver Mapa Biwa"
+                data-link2="Prac10/practica_10_Chiquita_Chasi_Y_Burgos.html"
+                data-text2="Ver Mapa Chiquita"
+                data-img="Prac10/Prac10.png">
+                <div class="card-image-placeholder"><img src="Prac10/Prac10.png" alt="Mapa Evolución"></div>
+                <div class="card-content">
+                    <div class="card-meta"><h3>Evolución Índices</h3><span class="format-tag tag-webmap">WebMap</span></div>
+                    <p class="card-desc">Visualización dinámica (Video/GIF).</p>
+                </div>
+            </article>
+
         </div>
     </section>
 
-    <section id="equipo" style="background: white;">
+    <section id="equipo">
         <div class="section-header hidden">
             <h2>El Equipo</h2>
             <p>Estudiantes responsables del proyecto.</p>
         </div>
-        
         <div class="team-container hidden">
             <div class="team-member">
-                <div class="avatar">P</div> <h3>Pablo Chasi Cajamarca</h3>
-                <p>Geografía y Medio Ambiente</p>
+                <div class="avatar">P</div>
+                <h3>Pablo Chasi Cajamarca</h3>
+                <p>Tecnologías de la información geográfica - 3º GTI</p>
             </div>
             <div class="team-member">
-                <div class="avatar">G</div>
+                <div class="avatar">G</div> 
                 <h3>Greysy Burgos Salazar</h3>
-                <p>Geografía y Medio Ambiente</p>
+                <p>Tecnologías de la información geográfica - 3º GTI</p>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 GeoPortfolio TIG.</p>
-    </footer>
+    <footer><p>&copy; 2024 GeoPortfolio TIG.</p></footer>
+
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-window">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <span id="modal-tag" class="format-tag tag-webmap">WebMap</span>
+                <h2 id="modal-title">Título</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-area">
+                    <span>Vista Previa</span>
+                </div>
+                <p id="modal-desc">Descripción...</p>
+                <br>
+                <div id="modal-actions" class="modal-actions">
+                    </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js" defer></script>
+    <script src="viewer-p4.js" defer></script>
+    <script src="viewer-p5.js" defer></script>
+    <script src="viewer-p9.js" defer></script>
 </body>
 </html>
