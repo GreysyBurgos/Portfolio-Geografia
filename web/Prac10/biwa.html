@@ -2,22 +2,16 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Lago Biwa</title>
+    <title>Visor NDWI Biwa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style> 
-        body { margin: 0; padding: 0; } 
-        #map { width: 100%; height: 100vh; }
-        
-        /* ESTILO PARA QUE LA LEYENDA FLOTE BONITA */
+        body { margin: 0; padding: 0; background: #f0f0f0; } 
+        #map { width: 100%; height: 100vh; background: white; }
         .legend-img {
-            background: white;
-            padding: 5px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-            border: 2px solid #ccc;
-            max-width: 150px; /* Ajusta si tu leyenda es muy grande */
+            background: white; padding: 5px; border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3); border: 2px solid #ccc;
         }
     </style>
 </head>
@@ -26,37 +20,35 @@
     <div id="map"></div>
 
     <script>
-        // 1. COORDENADAS DEL NOTEBOOK (Biwa)
-        var norte = 35.6;
-        var sur = 35.1;
-        var este = 136.3;
-        var oeste = 135.8;
+        // --- 1. CONFIGURACIÓN (SOLO CAMBIA ESTO) ---
+        // Pon aquí los píxeles que dice en Propiedades de la imagen
+        var anchoImagen = 2522;  // Cambia esto (ej: 1920)
+        var altoImagen = 1333;    // Cambia esto (ej: 1080)
+        
+        // ---------------------------------------------
 
-        // 2. INICIALIZAR MAPA
-        var map = L.map('map'); // El zoom lo ajustaremos auto
+        // Creamos el mapa en modo "SIMPLE" (sin coordenadas del mundo real)
+        var map = L.map('map', {
+            crs: L.CRS.Simple, // Esto desactiva la geografía
+            minZoom: -2        // Permite alejar la imagen
+        });
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+        // Definimos los límites basados en los píxeles
+        var bounds = [[0, 0], [altoImagen, anchoImagen]];
 
-        // 3. AÑADIR TU MAPA (La captura de la zona)
-        var bounds = [[sur, oeste], [norte, este]];
-        L.imageOverlay('mapa_biwa.png', bounds, {opacity: 0.8}).addTo(map);
+        // Cargamos la imagen
+        L.imageOverlay('biwa.png', bounds).addTo(map);
 
-        // AUTO-ZOOM para que se vea perfecto al abrir
+        // Ajustamos la vista para que la imagen ocupe toda la pantalla
         map.fitBounds(bounds);
 
-
-        // 4. AÑADIR LA LEYENDA (La foto pequeña)
-        var legend = L.control({position: 'bottomright'}); // Abajo derecha
-
+        // LEYENDA (Igual que antes)
+        var legend = L.control({position: 'bottomright'});
         legend.onAdd = function (map) {
             var div = L.DomUtil.create('div', 'info legend');
-            // Aquí cargamos la foto de la leyenda
             div.innerHTML = '<img src="leyenda.png" class="legend-img" alt="Leyenda">';
             return div;
         };
-
         legend.addTo(map);
 
     </script>
