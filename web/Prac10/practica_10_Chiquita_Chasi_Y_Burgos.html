@@ -2,29 +2,53 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mar Chiquita - NDWI</title>
+    <title>Mar Chiquita (Argentina) - NDWI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <style> body { margin: 0; padding: 0; } #map { width: 100%; height: 100vh; } </style>
+    <style> 
+        body { margin: 0; padding: 0; } 
+        #map { width: 100%; height: 100vh; }
+        .legend-img {
+            background: white;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            border: 2px solid #ccc;
+            max-height: 200px;
+        }
+    </style>
 </head>
 <body>
     <div id="map"></div>
     <script>
-        // --- CONFIGURACIÓN CHIQUITA (Argentina) ---
-        // Coordenadas exactas de tu Notebook
+        // --- COORDENADAS CHIQUITA (Del Notebook) ---
         var norte = -30.4;
         var sur = -30.8;
         var este = -62.4;
         var oeste = -63.0;
 
-        var map = L.map('map').setView([-30.6, -62.7], 10); // Centro del lago
+        var map = L.map('map');
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© OpenStreetMap'}).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
 
-        // Tu imagen superpuesta
+        // IMAGEN DEL MAPA
         var bounds = [[sur, oeste], [norte, este]];
-        L.imageOverlay('chiquita.png', bounds, {opacity: 0.8}).addTo(map);
+        L.imageOverlay('chiquita.png', bounds, {opacity: 0.9}).addTo(map);
+
+        // AUTO-ZOOM
+        map.fitBounds(bounds);
+
+        // LEYENDA (Misma imagen)
+        var legend = L.control({position: 'bottomright'});
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info legend');
+            div.innerHTML = '<img src="leyenda.png" class="legend-img" alt="Leyenda NDWI">';
+            return div;
+        };
+        legend.addTo(map);
     </script>
 </body>
 </html>

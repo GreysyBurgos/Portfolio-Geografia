@@ -2,29 +2,63 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Lago Biwa - NDWI</title>
+    <title>Lago Biwa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <style> body { margin: 0; padding: 0; } #map { width: 100%; height: 100vh; } </style>
+    <style> 
+        body { margin: 0; padding: 0; } 
+        #map { width: 100%; height: 100vh; }
+        
+        /* ESTILO PARA QUE LA LEYENDA FLOTE BONITA */
+        .legend-img {
+            background: white;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            border: 2px solid #ccc;
+            max-width: 150px; /* Ajusta si tu leyenda es muy grande */
+        }
+    </style>
 </head>
 <body>
+
     <div id="map"></div>
+
     <script>
-        // --- CONFIGURACIÓN BIWA (Japón) ---
-        // Coordenadas exactas de tu Notebook
+        // 1. COORDENADAS DEL NOTEBOOK (Biwa)
         var norte = 35.6;
         var sur = 35.1;
         var este = 136.3;
         var oeste = 135.8;
 
-        var map = L.map('map').setView([35.35, 136.05], 10); // Centro del lago
+        // 2. INICIALIZAR MAPA
+        var map = L.map('map'); // El zoom lo ajustaremos auto
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© OpenStreetMap'}).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
 
-        // Tu imagen superpuesta
+        // 3. AÑADIR TU MAPA (La captura de la zona)
         var bounds = [[sur, oeste], [norte, este]];
         L.imageOverlay('biwa.png', bounds, {opacity: 0.8}).addTo(map);
+
+        // AUTO-ZOOM para que se vea perfecto al abrir
+        map.fitBounds(bounds);
+
+
+        // 4. AÑADIR LA LEYENDA (La foto pequeña)
+        var legend = L.control({position: 'bottomright'}); // Abajo derecha
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info legend');
+            // Aquí cargamos la foto de la leyenda
+            div.innerHTML = '<img src="leyenda.png" class="legend-img" alt="Leyenda">';
+            return div;
+        };
+
+        legend.addTo(map);
+
     </script>
 </body>
 </html>
